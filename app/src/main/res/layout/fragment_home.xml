@@ -55,7 +55,7 @@
             android:layout_height="58dp"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="68dp"
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -73,8 +73,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Surabaya"
+            android:layout_marginTop="64dp"
+            android:text="@{vm.city}"
             android:textColor="@color/Gray"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -218,9 +218,10 @@
             android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pressure">
+            app:layout_constraintTop_toBottomOf="@+id/pressure"
+            app:layout_constraintVertical_bias="0.623">
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -289,6 +290,15 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="137dp"
+            android:layout_height="50dp"
+            android:background="@drawable/forecast_btn"
+            android:text="Forecast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

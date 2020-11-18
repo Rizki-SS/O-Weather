@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.weatherapp.MainActivity">
 
+
     <fragment
         android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -16,5 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/home" />
+        app:navGraph="@navigation/home"
+        tools:layout="@layout/fragment_forecast" />
 </androidx.constraintlayout.widget.ConstraintLayout>

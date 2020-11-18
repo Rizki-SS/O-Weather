@@ -16,12 +16,13 @@ import java.util.*
 
 class CurrentViewModel:ViewModel(){
     private var currentWeatherData: MutableLiveData<WeatherModel> = MutableLiveData<WeatherModel>()
+    private var city:String = "Malang"
     private val dateFormat = SimpleDateFormat("EEE, dd MMM yyyy")
     private val currentDate = dateFormat.format(Date())
 
     fun init(){
         val service: ApiService = ApiClient().getApiServic()
-        service.getWeather("369e449d9e7ad63c71649683cfc00dba", "Malang", "metric")
+        service.getWeather("369e449d9e7ad63c71649683cfc00dba", city, "metric")
             .enqueue(object: Callback<WeatherModel> {
                 override fun onFailure(call: Call<WeatherModel>, t: Throwable) {
                     TODO("Not yet implemented")
@@ -44,5 +45,9 @@ class CurrentViewModel:ViewModel(){
         val dateFormat = SimpleDateFormat("hh : mm")
         val currentDate = dateFormat.format(Date(unix.toLong() * 1000))
         return currentDate
+    }
+
+    fun getCity():String{
+        return city
     }
 }

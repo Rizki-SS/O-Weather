@@ -1,13 +1,15 @@
+package com.example.weatherapp.model
+
 data class ForecastModel(
     val city: City,
     val cnt: Int,
     val cod: String,
-    val list: List<listForecast>,
+    val list: List<ListForecast>,
     val message: Int
 )
 
 data class City(
-    val coord: Coord,
+    val coord: Coord1,
     val country: String,
     val id: Int,
     val name: String,
@@ -17,29 +19,29 @@ data class City(
     val timezone: Int
 )
 
-data class listForecast(
-    val clouds: Clouds,
+data class ListForecast(
+    val clouds: Clouds2,
     val dt: Int,
     val dt_txt: String,
-    val main: Main,
+    val main: Main1,
     val pop: Double,
     val rain: Rain,
-    val sys: Sys,
+    val sys: Sys1,
     val visibility: Int,
-    val weather: List<Weather>,
-    val wind: Wind
+    val weather: List<Weather1>,
+    val wind: Wind1
 )
 
-data class Coord(
+data class Coord1(
     val lat: Double,
     val lon: Double
 )
 
-data class Clouds(
+data class Clouds2(
     val all: Int
 )
 
-data class Main(
+data class Main1(
     val feels_like: Double,
     val grnd_level: Int,
     val humidity: Int,
@@ -55,18 +57,18 @@ data class Rain(
     val `3h`: Double
 )
 
-data class Sys(
+data class Sys1(
     val pod: String
 )
 
-data class Weather(
+data class Weather1(
     val description: String,
     val icon: String,
     val id: Int,
     val main: String
 )
 
-data class Wind(
+data class Wind1(
     val deg: Int,
     val speed: Double
 )

@@ -10,4 +10,8 @@
         android:name="com.example.weatherapp.view.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/forecastFragment2"
+        android:name="com.example.weatherapp.view.ForecastFragment"
+        android:label="ForecastFragment" />
 </navigation>
