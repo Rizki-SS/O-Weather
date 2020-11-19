@@ -1,13 +1,15 @@
 package com.example.weatherapp.viewModel
 
-import android.app.Application
-import android.util.Log
+import android.view.View
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.findNavController
 import com.example.weatherapp.apiService.ApiClient
 import com.example.weatherapp.apiService.ApiService
 import com.example.weatherapp.model.WeatherModel
+import com.example.weatherapp.view.HomeDirections
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,5 +51,10 @@ class CurrentViewModel:ViewModel(){
 
     fun getCity():String{
         return city
+    }
+
+    fun onForecastClick(view:View){
+        var action = HomeDirections.actionHome2ToForecastFragment2()
+        view.findNavController().navigate(action)
     }
 }
