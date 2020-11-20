@@ -46,10 +46,10 @@ class ForecastFragment : Fragment() {
         _binding = FragmentForecastBinding.inflate(inflater,container,false)
         var viewModel = ViewModelProvider(this).get(ForecastViewModel::class.java)
         viewModel.init()
-        viewModel.forecastWeather.observe(this, Observer {
-            val adapter = ForecastItemAdaptor(it.list)
-            binding.list.adapter = adapter
-        })
+//        viewModel.forecastWeather.observe(this, Observer {
+//            val adapter = ForecastItemAdaptor(it.list)
+//            binding.list.adapter = adapter
+//        })
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
         return binding.root

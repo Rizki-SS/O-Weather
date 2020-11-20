@@ -22,14 +22,12 @@ class ForecastItemAdaptor(
         this.data = data
     }
 
-    // untuk membuat setiap item recyclerview berdasarkan jumlah data yang dimasukkan ke dalam adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ItemViewHolder(
         DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             R.layout.list_item, parent, false)
     )
 
-    // untuk memasukkan atau set data ke dalam view
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
 //        Log.d("String",data.get(position).toString())
         holder.listItemBinding.data = data.get(position)

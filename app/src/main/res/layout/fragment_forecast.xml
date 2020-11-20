@@ -70,6 +70,7 @@
             android:scrollbars="vertical"
             app:layoutManager="LinearLayoutManager"
             android:layout_margin="30dp"
+            android:setAdapter="@{vm.forecastWeather.list}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
