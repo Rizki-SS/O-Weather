@@ -18,9 +18,9 @@ class ForecastViewModel:ViewModel() {
     private val _forecastWeather = MutableLiveData<ForecastModel>()
     val forecastWeather: LiveData<ForecastModel> get() = _forecastWeather
 
-    fun init(){
+    fun init(city:String){
         val service:ApiService = ApiClient().getApiServic()
-        service.getForecast("369e449d9e7ad63c71649683cfc00dba","Malang","metric")
+        service.getForecast("369e449d9e7ad63c71649683cfc00dba",city,"metric")
             .enqueue(object :Callback<ForecastModel>{
                 override fun onFailure(call: Call<ForecastModel>, t: Throwable) {
                     Log.d("Request failed", "No Internet Access")

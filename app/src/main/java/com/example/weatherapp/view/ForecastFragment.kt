@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.weatherapp.ForecastItemAdaptor
 import com.example.weatherapp.databinding.FragmentForecastBinding
 import com.example.weatherapp.viewModel.ForecastViewModel
@@ -38,6 +39,8 @@ class ForecastFragment : Fragment() {
     private var _binding: FragmentForecastBinding? = null
     private val binding get() = _binding!!
 
+    val args: ForecastFragmentArgs by navArgs()
+
     @SuppressLint("FragmentLiveDataObserve")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,11 +48,7 @@ class ForecastFragment : Fragment() {
     ): View? {
         _binding = FragmentForecastBinding.inflate(inflater,container,false)
         var viewModel = ViewModelProvider(this).get(ForecastViewModel::class.java)
-        viewModel.init()
-//        viewModel.forecastWeather.observe(this, Observer {
-//            val adapter = ForecastItemAdaptor(it.list)
-//            binding.list.adapter = adapter
-//        })
+        viewModel.init(args.requestCity.toString())
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
         return binding.root

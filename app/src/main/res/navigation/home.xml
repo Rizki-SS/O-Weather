@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_home2_to_forecastFragment2"
             app:destination="@id/forecastFragment2" />
+        <action
+            android:id="@+id/action_home2_to_cityFragment"
+            app:destination="@id/cityFragment" />
     </fragment>
     <fragment
         android:id="@+id/forecastFragment2"
@@ -20,6 +23,19 @@
         android:label="ForecastFragment" >
         <action
             android:id="@+id/action_forecastFragment2_to_home2"
+            app:destination="@id/home2" />
+        <argument
+            android:name="requestCity"
+            app:argType="string"
+            android:defaultValue="Malang"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityFragment"
+        android:name="com.example.weatherapp.view.CityFragment"
+        android:label="CityFragment" >
+        <action
+            android:id="@+id/action_cityFragment_to_home2"
             app:destination="@id/home2" />
     </fragment>
 </navigation>

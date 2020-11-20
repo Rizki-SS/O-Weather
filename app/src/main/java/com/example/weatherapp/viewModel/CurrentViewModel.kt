@@ -30,9 +30,10 @@ class CurrentViewModel:ViewModel(){
     private val currentDate = dateFormat.format(Date())
 
     fun init(){
-        _city.value = "Malang"
+        if (city.value.isNullOrBlank()){
+            _city.value = "Malang"
+        }
         val service: ApiService = ApiClient().getApiServic()
-        Log.d("Asdsad", city.value.toString())
         service.getWeather("369e449d9e7ad63c71649683cfc00dba", city.value.toString(), "metric")
             .enqueue(object: Callback<WeatherModel> {
                 override fun onFailure(call: Call<WeatherModel>, t: Throwable) {
@@ -42,6 +43,10 @@ class CurrentViewModel:ViewModel(){
                     _currentWeather.value=response.body()
                 }
             })
+    }
+
+    fun setCityName(city:String){
+        _city.value = city
     }
 
     fun getCurrentDate(): String? {
@@ -56,6 +61,12 @@ class CurrentViewModel:ViewModel(){
 
     fun onForecastClick(view:View){
         var action = HomeDirections.actionHome2ToForecastFragment2()
+        action.requestCity = _city.value.toString()
+        view.findNavController().navigate(action)
+    }
+
+    fun onSetCityClick(view: View){
+        var action = HomeDirections.actionHome2ToCityFragment()
         view.findNavController().navigate(action)
     }
 }
