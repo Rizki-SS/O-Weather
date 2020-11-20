@@ -1,9 +1,11 @@
 package com.example.weatherapp.viewModel
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.Navigation
 import com.example.weatherapp.ForecastItemAdaptor
 import com.example.weatherapp.apiService.ApiClient
 import com.example.weatherapp.apiService.ApiService
@@ -12,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BskForecastViewModel:ViewModel() {
+class ForecastViewModel:ViewModel() {
     private val _forecastWeather = MutableLiveData<ForecastModel>()
     val forecastWeather: LiveData<ForecastModel> get() = _forecastWeather
 
@@ -32,5 +34,9 @@ class BskForecastViewModel:ViewModel() {
                 }
 
             })
+    }
+
+    fun onBack(view: View){
+        Navigation.findNavController(view).navigateUp();
     }
 }

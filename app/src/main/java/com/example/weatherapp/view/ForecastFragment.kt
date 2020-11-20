@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.ForecastItemAdaptor
 import com.example.weatherapp.databinding.FragmentForecastBinding
-import com.example.weatherapp.viewModel.BskForecastViewModel
+import com.example.weatherapp.viewModel.ForecastViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,9 +43,8 @@ class ForecastFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentForecastBinding.inflate(inflater,container,false)
-        var viewModel = ViewModelProvider(this).get(BskForecastViewModel::class.java)
+        var viewModel = ViewModelProvider(this).get(ForecastViewModel::class.java)
         viewModel.init()
         viewModel.forecastWeather.observe(this, Observer {
             val adapter = ForecastItemAdaptor(it.list)

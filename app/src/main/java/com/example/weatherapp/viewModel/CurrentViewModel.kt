@@ -2,7 +2,8 @@ package com.example.weatherapp.viewModel
 
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +12,7 @@ import com.example.weatherapp.apiService.ApiClient
 import com.example.weatherapp.apiService.ApiService
 import com.example.weatherapp.model.WeatherModel
 import com.example.weatherapp.view.HomeDirections
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,7 +25,6 @@ class CurrentViewModel:ViewModel(){
 
     private val _city = MutableLiveData<String>()
     val city: LiveData<String> get() = _city
-
 
     private val dateFormat = SimpleDateFormat("EEE, dd MMM yyyy")
     private val currentDate = dateFormat.format(Date())
