@@ -46,14 +46,10 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
-
         var viewModel = ViewModelProvider(this).get(CurrentViewModel::class.java)
         viewModel.init()
-        viewModel.getCurrentWeatherData()?.observe(this, Observer {
-            binding.weather = it
-        })
         binding.vm = viewModel
-        // Inflate the layout for this fragment
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 

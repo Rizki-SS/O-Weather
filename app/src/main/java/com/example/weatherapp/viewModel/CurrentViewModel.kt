@@ -1,7 +1,8 @@
 package com.example.weatherapp.viewModel
 
+import android.util.Log
 import android.view.View
-import androidx.databinding.BindingAdapter
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,26 +18,29 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class CurrentViewModel:ViewModel(){
-    private var currentWeatherData: MutableLiveData<WeatherModel> = MutableLiveData<WeatherModel>()
-    private var city:String = "Malang"
+    private val _currentWeather = MutableLiveData<WeatherModel>()
+    val currentWeather: LiveData<WeatherModel> get() = _currentWeather
+
+    private val _city = MutableLiveData<String>()
+    val city: LiveData<String> get() = _city
+
+
     private val dateFormat = SimpleDateFormat("EEE, dd MMM yyyy")
     private val currentDate = dateFormat.format(Date())
 
     fun init(){
+        _city.value = "Malang"
         val service: ApiService = ApiClient().getApiServic()
-        service.getWeather("369e449d9e7ad63c71649683cfc00dba", city, "metric")
+        Log.d("Asdsad", city.value.toString())
+        service.getWeather("369e449d9e7ad63c71649683cfc00dba", city.value.toString(), "metric")
             .enqueue(object: Callback<WeatherModel> {
                 override fun onFailure(call: Call<WeatherModel>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.d("Request failed", "No Internet Access")
                 }
                 override fun onResponse(call: Call<WeatherModel>, response: Response<WeatherModel>) {
-                    currentWeatherData.value=response.body()
+                    _currentWeather.value=response.body()
                 }
             })
-    }
-
-    fun getCurrentWeatherData(): LiveData<WeatherModel>? {
-        return currentWeatherData
     }
 
     fun getCurrentDate(): String? {
@@ -47,10 +51,6 @@ class CurrentViewModel:ViewModel(){
         val dateFormat = SimpleDateFormat("hh : mm")
         val currentDate = dateFormat.format(Date(unix.toLong() * 1000))
         return currentDate
-    }
-
-    fun getCity():String{
-        return city
     }
 
     fun onForecastClick(view:View){
