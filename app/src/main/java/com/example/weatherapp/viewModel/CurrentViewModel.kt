@@ -26,9 +26,6 @@ class CurrentViewModel:ViewModel(){
     private val _city = MutableLiveData<String>()
     val city: LiveData<String> get() = _city
 
-    private val dateFormat = SimpleDateFormat("EEE, dd MMM yyyy")
-    private val currentDate = dateFormat.format(Date())
-
     fun init(){
         if (city.value.isNullOrBlank()){
             _city.value = "Malang"
@@ -47,16 +44,6 @@ class CurrentViewModel:ViewModel(){
 
     fun setCityName(city:String){
         _city.value = city
-    }
-
-    fun getCurrentDate(): String? {
-        return currentDate
-    }
-
-    fun convertTime(unix:Int): String?{
-        val dateFormat = SimpleDateFormat("hh : mm")
-        val currentDate = dateFormat.format(Date(unix.toLong() * 1000))
-        return currentDate
     }
 
     fun onForecastClick(view:View){
