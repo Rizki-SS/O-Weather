@@ -13,14 +13,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="30dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_margin="15dp"
         tools:context="com.example.weatherapp.view.CityFragment">
 
         <Button
             android:id="@+id/button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:background="@drawable/circle_mini"
             android:backgroundTint="@color/colorPrimary2"
             android:drawableLeft="@drawable/icon_back_foreground"
@@ -32,10 +31,10 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="17dp"
             android:text="City Name :"
             android:textColor="@color/Gray"
-            android:textSize="25dp"
+            android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button" />
 

@@ -39,9 +39,9 @@
             android:id="@+id/tempText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{String.valueOf(vm.currentWeather.main.temp)}"
             android:textColor="@color/Gray"
             android:textSize="90dp"
-            android:text="@{String.valueOf(vm.currentWeather.main.temp)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -50,9 +50,7 @@
             android:id="@+id/imageView"
             android:layout_width="61dp"
             android:layout_height="58dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="68dp"
+            android:layout_margin="15dp"
             android:iconUrl="@{vm.currentWeather.weather.get(0).icon}"
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,8 +60,8 @@
             android:id="@+id/imageView11"
             android:layout_width="32dp"
             android:layout_height="25dp"
-            android:src="@drawable/icon_location_foreground"
             android:onClick="@{(v)->vm.onSetCityClick(v)}"
+            android:src="@drawable/icon_location_foreground"
             app:layout_constraintBottom_toTopOf="@+id/tempText"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="@+id/textView2" />
@@ -72,22 +70,23 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
             android:text="@{vm.city}"
             android:textColor="@color/Gray"
             android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.2" />
 
         <TextView
             android:id="@+id/feelLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:text="@{`feel like `+vm.currentWeather.main.feels_like+`°C`}"
             android:textColor="@color/Gray"
             android:textSize="15dp"
-            android:layout_marginRight="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -107,10 +106,10 @@
             android:id="@+id/tempMax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="@{`Temp Max `+vm.currentWeather.main.temp_max + `°C`}"
             android:textColor="@color/Gray"
             android:textSize="15dp"
-            android:layout_marginLeft="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -127,57 +126,61 @@
 
         <TextView
             android:id="@+id/mainWeathrt"
+            style="@style/Gray20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@{vm.currentWeather.weather.get(0).main}"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.2"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            style="@style/Gray20dp" />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="80dp"
             android:layout_height="2dp"
             android:src="@drawable/circle_mini"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="@+id/mainWeathrt"
             app:layout_constraintStart_toStartOf="@+id/mainWeathrt"
             app:layout_constraintTop_toBottomOf="@+id/mainWeathrt" />
 
         <TextView
             android:id="@+id/textView7"
+            style="@style/AddIfonHead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:text="pressure"
+            app:layout_constraintBottom_toTopOf="@+id/pressure"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainWeathrt"
-            style="@style/AddIfonHead" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/pressure"
+            style="@style/Gray20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{vm.currentWeather.main.pressure + `hPa`}"
-            style="@style/Gray20dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="@+id/textView7"
             app:layout_constraintStart_toStartOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <TextView
             android:id="@+id/textView8"
+            style="@style/AddIfonHead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:text="wind speed"
-            style="@style/AddIfonHead"
+            app:layout_constraintBottom_toTopOf="@+id/windSpeed"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/mainWeathrt" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/windSpeed"
@@ -185,42 +188,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{vm.currentWeather.wind.speed + `m/s`}"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="@+id/textView8"
             app:layout_constraintStart_toStartOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <TextView
             android:id="@+id/textView9"
+            style="@style/AddIfonHead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:text="humidity"
-            style="@style/AddIfonHead"
+            app:layout_constraintBottom_toTopOf="@+id/humidity"
             app:layout_constraintEnd_toStartOf="@+id/textView7"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainWeathrt" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/humidity"
+            style="@style/Gray20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{vm.currentWeather.main.humidity + `%`}"
-            style="@style/Gray20dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="@+id/textView9"
             app:layout_constraintStart_toStartOf="@+id/textView9"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/constraintLayout2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
             android:background="@drawable/circle_mini"
             android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pressure"
-            app:layout_constraintVertical_bias="0.623">
+            app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -237,7 +242,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="149dp" />
+                app:layout_constraintGuide_percent="0.5" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -292,13 +297,18 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="137dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:background="@drawable/forecast_btn"
-            android:text="Forecast"
+            android:drawableRight="@drawable/icon_forward"
+            android:drawableTint="@color/colorPrimary"
             android:onClick="@{(v) -> vm.onForecastClick(v)}"
+            android:paddingLeft="20dp"
+            android:text="Forecast"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
